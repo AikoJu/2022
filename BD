@@ -1,0 +1,63 @@
+CREATE DATABASE teste;
+
+USE teste;
+
+CREATE TABLE cadfun (
+  CODFUN  INT NOT NULL PRIMARY KEY,
+  NOME    VARCHAR(40) NOT NULL,
+  DEPTO   CHAR( 2) not null,
+  FUNCAO  CHAR(20),
+  FILHOS  INT,
+  SALARIO DECIMAL(10, 2));
+  
+  
+INSERT INTO cadfun VALUES (15,'Marcos','2', 'analista', 2, 2184.33);
+INSERT INTO cadfun VALUES (16,'andre', '2', null, 3, 2184.33);
+INSERT INTO cadfun VALUES (108, 'ROBERTO CARLOS', '2','ANALISTA',0,2000.00);
+INSERT INTO cadfun VALUES (109,'CARLOS AMARAL','1','DBA',1,15000.00);
+INSERT INTO cadfun VALUES (110,'CARLOS GARDEL','1','PROGRAMADOR',0,1000.00);
+INSERT INTO cadfun VALUES (111,'AMAURI LOPES','2','DBA',2,2000.00);
+INSERT INTO cadfun VALUES (112,'MARCIO GARCIA','1','DBA',0,2500.00);
+
+#consultar funcionario 15
+select NOME, DEPTO from cadfun where codfun=15;
+
+#consultar todos funcionarios e depto com salario maior ou igual a 2000
+select NOME, DEPTO from cadfun where salario>=2000;
+
+#consultar todos funcionarios e depto com salario menor ou igual a 2000
+select NOME, DEPTO from cadfun where salario<=2000;
+
+
+select NOME, DEPTO from cadfun where nome='marcos';
+
+select NOME, DEPTO, FUNCAO from cadfun where depto='2' or funcao='analista';
+
+select NOME, DEPTO, FUNCAO, SALARIO from cadfun where salario>=1200.00 or salario<=3000 ;
+
+select nome, depto, funcao, salario from cadfun where salario=1200.00 or funcao= 'programador';
+
+select * from cadfun where funcao is null;
+
+select nome, salario from cadfun where salario between 1700 and 2000;
+
+select nome, salario from cadfun where salario not between 1700 and 2000;
+
+select nome, filhos from cadfun where filhos between 0 and 2;
+
+select * from cadfun where funcao in ('analista', 'programador');
+
+select * from cadfun where funcao not in ('analista', 'programador');
+
+select * from cadfun where filhos in (0,1,2,3,4);
+
+select nome from cadfun where nome like 'A%';
+
+select NOME from cadfun where nome LIKE '%a';
+
+select NOME from cadfun where nome LIKE '%R';
+
+select NOME from cadfun where nome LIKE '%AR%';
+
+
+select * from cadfun;
